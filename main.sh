@@ -7,13 +7,13 @@
 #!/bin/bash
 
 DIR="/home/aogorodnikov/cropped"
-ARCH="alexnet"
+ARCH="vgg16"
 LR=0.05
 WD=-5
 K=100
 WORKERS=12
 EPOCHS=100
-EXP="/home/aogorodnikov/model_alex"
+EXP="/home/aogorodnikov/model_vgg16"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
 mkdir -p ${EXP}
