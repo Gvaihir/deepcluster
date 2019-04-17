@@ -7,14 +7,14 @@
 #!/bin/bash
 
 DIR="/home/aogorodnikov/train"
-ARCH="vgg16"
+ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
 WORKERS=12
 EPOCHS=100
 BATCH=8
-EXP="/home/aogorodnikov/model_vgg16"
+EXP="/home/aogorodnikov/model_alex"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
 mkdir -p ${EXP}
