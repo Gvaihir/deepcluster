@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/cropped"
+DIR="/home/aogorodnikov/train"
 ARCH="vgg16"
 LR=0.05
 WD=-5
