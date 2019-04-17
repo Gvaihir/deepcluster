@@ -7,8 +7,8 @@
 #!/bin/bash
 
 MODEL='/home/aogorodnikov/model_alex/checkpoint.pth.tar'
-EXP='/private/home/mathilde/temp'
+EXP='/home/aogorodnikov/tmp'
 CONV=5
-DATA='/datasets01/imagenet_full_size/061417/val'
+DATA='/home/aogorodnikov/val'
 
 python activ-retrieval.py --model ${MODEL} --exp ${EXP} --conv ${CONV} --data ${DATA}
