@@ -13,7 +13,7 @@ WD=-5
 K=100
 WORKERS=4
 EPOCHS=100
-BATCH=12
+BATCH=1
 EXP="/home/aogorodnikov/model_vgg16"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
