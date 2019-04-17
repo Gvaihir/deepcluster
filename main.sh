@@ -11,9 +11,9 @@ ARCH="vgg16"
 LR=0.05
 WD=-5
 K=100
-WORKERS=12
+WORKERS=4
 EPOCHS=100
-BATCH=28
+BATCH=64
 EXP="/home/aogorodnikov/model_vgg16"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
