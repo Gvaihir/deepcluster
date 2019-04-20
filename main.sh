@@ -6,15 +6,15 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/train"
-ARCH="vgg16"
+DIR="/data/02_sudoku/train"
+ARCH="alexnet"
 LR=0.05
 WD=-5
-K=100
+K=1000
 WORKERS=4
 EPOCHS=100
-BATCH=1
-EXP="/home/aogorodnikov/model_vgg16"
+BATCH=256
+EXP="//data/02_sudoku/model_alex_3"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
 mkdir -p ${EXP}
