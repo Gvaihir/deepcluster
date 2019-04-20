@@ -13,7 +13,7 @@ WD=-5
 K=1000
 WORKERS=4
 EPOCHS=100
-BATCH=256
+BATCH=128
 EXP="/data/02_sudoku/model_alex_3"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
