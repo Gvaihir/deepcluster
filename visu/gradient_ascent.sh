@@ -7,8 +7,8 @@
 #!/bin/bash
 
 MODEL='/private/home/mathilde/model-to-release/alexnet/checkpoint.pth.tar'
-ARCH='vgg16'
+ARCH='alexnet'
 EXP='/private/home/mathilde/temp'
-CONV=6
+CONV=5
 
 python gradient_ascent.py --model ${MODEL} --exp ${EXP} --conv ${CONV} --arch ${ARCH}
