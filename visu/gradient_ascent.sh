@@ -6,9 +6,9 @@
 #
 #!/bin/bash
 
-MODEL='/private/home/mathilde/model-to-release/alexnet/checkpoint.pth.tar'
+MODEL='/data2/02_sudoku/model_alex/checkpoint.pth.tar'
 ARCH='alexnet'
-EXP='/private/home/mathilde/temp'
+EXP='/data2/02_sudoku/model_alex/ascent'
 CONV=5
 
 python gradient_ascent.py --model ${MODEL} --exp ${EXP} --conv ${CONV} --arch ${ARCH}
