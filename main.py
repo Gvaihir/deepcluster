@@ -99,7 +99,8 @@ def main():
             checkpoint = torch.load(args.resume)
             args.start_epoch = checkpoint['epoch']
             # remove top_layer parameters from checkpoint
-            for key in checkpoint['state_dict']:
+            checkpoint_cp = checkpoint.copy()
+            for key in checkpoint_cp['state_dict']:
                 if 'top_layer' in key:
                     del checkpoint['state_dict'][key]
             model.load_state_dict(checkpoint['state_dict'])
