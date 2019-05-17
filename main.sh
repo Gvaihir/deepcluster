@@ -16,7 +16,7 @@ EPOCHS=10
 BATCH=256
 EXP="/home/aogorodnikov/model_alex_add10"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex/checkpoints/checkpoint_13.0.pth.tar"
+RESUME="/home/aogorodnikov/model_alex/checkpoint.pth.tar"
 
 
 mkdir -p ${EXP}
