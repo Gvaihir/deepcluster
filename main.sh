@@ -10,10 +10,10 @@ DIR="/data/02_sudoku/train"
 ARCH="alexnet"
 LR=0.05
 WD=-5
-K=1000
+K=100
 WORKERS=4
-EPOCHS=100
-BATCH=64
+EPOCHS=10
+BATCH=256
 EXP="/data/02_sudoku/model_alex_3"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 
