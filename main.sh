@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DIR="/data/02_sudoku/train"
+DIR="/home/aogorodnikov/data"
 ARCH="alexnet"
 LR=0.05
 WD=-5
