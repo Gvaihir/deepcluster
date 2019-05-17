@@ -14,7 +14,7 @@ K=100
 WORKERS=4
 EPOCHS=10
 BATCH=256
-EXP="/sudoku/02_sudoku/model_alex_add10"
+EXP="/home/aogorodnikov/model_alex_add10"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 RESUME="/home/aogorodnikov/model_alex"
 
