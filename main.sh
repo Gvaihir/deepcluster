@@ -14,10 +14,12 @@ K=100
 WORKERS=4
 EPOCHS=10
 BATCH=256
-EXP="/data/02_sudoku/model_alex_3"
+EXP="/sudoku/02_sudoku/model_alex_add10"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
+RESUME="/home/aogorodnikov/model_alex"
+
 
 mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
-  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS}
+  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS} --resume ${RESUME}
