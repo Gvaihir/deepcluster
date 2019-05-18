@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/data"
+DIR="/sudoku/02_sudoku/cropped"
 ARCH="alexnet"
 LR=0.05
 WD=-5
@@ -14,7 +14,7 @@ K=100
 WORKERS=4
 EPOCHS=10
 BATCH=256
-EXP="/home/aogorodnikov/model_alex_add10"
+EXP="/home/aogorodnikov/model_alex_all"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 RESUME="/home/aogorodnikov/model_alex/checkpoint.pth.tar"
 
