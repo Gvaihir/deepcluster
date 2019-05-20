@@ -14,9 +14,9 @@ K=100
 WORKERS=4
 EPOCHS=100
 BATCH=256
-EXP="/home/aogorodnikov/model_alex_pos"
+EXP="/home/aogorodnikov/model_alex_pos_continue"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex/checkpoint.pth.tar"
+RESUME="/home/aogorodnikov/model_alex_pos_14ep/checkpoint.pth.tar"
 CLUST="PIC"
 
 
