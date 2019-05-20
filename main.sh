@@ -6,20 +6,21 @@
 #
 #!/bin/bash
 
-DIR="/sudoku/02_sudoku/cropped"
+DIR="/home/aogorodnikov/data"
 ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
 WORKERS=0
-EPOCHS=10
+EPOCHS=100
 BATCH=256
-EXP="/home/aogorodnikov/model_alex_all"
+EXP="/home/aogorodnikov/model_alex_pos"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 RESUME="/home/aogorodnikov/model_alex/checkpoint.pth.tar"
+CLUST="PIC"
 
 
 mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
-  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS} --resume ${RESUME}
+  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS} --resume ${RESUME} --clustering ${CLUST}
