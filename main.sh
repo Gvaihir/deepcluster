@@ -11,13 +11,13 @@ ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
-WORKERS=4
-EPOCHS=200
-BATCH=256
-EXP="/home/aogorodnikov/model_alex_kmeans300"
+WORKERS=2
+EPOCHS=100
+BATCH=128
+EXP="/home/aogorodnikov/model_alex_pos_continue"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex/checkpoint.pth.tar"
-CLUST="Kmeans"
+RESUME="/home/aogorodnikov/model_alex_pos_14ep/checkpoint.pth.tar"
+CLUST="PIC"
 
 
 mkdir -p ${EXP}
