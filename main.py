@@ -262,7 +262,7 @@ def train(loader, model, crit, opt, epoch):
         loss = crit(output, target_var)
 
         # record loss
-        losses.update(loss.data, input_tensor.size(0)).detach().item()
+        losses.update(loss.data, input_tensor.size(0))
 
         # compute gradient and do SGD step
         opt.zero_grad()
