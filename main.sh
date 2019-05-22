@@ -16,7 +16,7 @@ EPOCHS=100
 BATCH=64
 EXP="/home/aogorodnikov/model_alex_pos_continue"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex_pos_14ep/checkpoint.pth.tar"
+RESUME="/home/aogorodnikov/model_alex_PIC200/checkpoint.pth.tar"
 CLUST="PIC"
 
 
