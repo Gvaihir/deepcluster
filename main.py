@@ -164,7 +164,7 @@ def main():
             batch_size=args.batch,
             num_workers=args.workers,
             sampler=sampler,
-            pin_memory=False,
+            pin_memory=True,
         )
 
         # set last fully connected layer
