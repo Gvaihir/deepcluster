@@ -17,7 +17,7 @@ BATCH=256
 EXP="/home/aogorodnikov/model_alex_kmeans300"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 RESUME="/home/aogorodnikov/model_alex_kmeans200/checkpoint.pth.tar"
-CLUST="Kmeans"
+#CLUST="Kmeans"
 
 
 mkdir -p ${EXP}
