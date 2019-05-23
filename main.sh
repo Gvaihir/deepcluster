@@ -11,16 +11,16 @@ ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
-WORKERS=0
+WORKERS=4
 EPOCHS=100
-BATCH=64
-EXP="/home/aogorodnikov/model_alex_pos_continue"
+BATCH=256
+EXP="/home/aogorodnikov/model_alex_kmeans300"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex_PIC200/checkpoint.pth.tar"
-CLUST="PIC"
+RESUME="/home/aogorodnikov/model_alex_kmeans200/checkpoint.pth.tar"
+CLUST="Kmeans"
 
 
 mkdir -p ${EXP}
 
-CUDA_VISIBLE_DEVICES=0,1 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
+CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
   --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS} --resume ${RESUME} --clustering ${CLUST}
