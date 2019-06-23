@@ -70,6 +70,7 @@ def main():
     traindir = os.path.join(args.data, 'train')
     valdir = os.path.join(args.data, 'val')
 
+
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
                                      std=[0.229, 0.224, 0.225])
 
@@ -91,6 +92,7 @@ def main():
                              transforms.RandomHorizontalFlip(),
                              transforms.ToTensor(),
                              normalize]
+
     train_dataset = datasets.ImageFolder(
         traindir,
         transform=transforms.Compose(transformations_train)
@@ -100,15 +102,19 @@ def main():
         valdir,
         transform=transforms.Compose(transformations_val)
     )
+
     train_loader = torch.utils.data.DataLoader(train_dataset,
                                                batch_size=args.batch_size,
                                                shuffle=True,
                                                num_workers=args.workers,
                                                pin_memory=True)
+
     val_loader = torch.utils.data.DataLoader(val_dataset,
                                              batch_size=int(args.batch_size/2),
                                              shuffle=False,
                                              num_workers=args.workers)
+
+
 
     # logistic regression
     reglog = RegLog(args.conv, len(train_dataset.classes)).cuda()
@@ -118,6 +124,7 @@ def main():
         momentum=args.momentum,
         weight_decay=10**args.weight_decay
     )
+
 
     # create logs
     exp_log = os.path.join(args.exp, 'log')

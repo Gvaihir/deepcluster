@@ -6,6 +6,7 @@
 #
 import os
 import pickle
+from glob import glob
 
 import numpy as np
 import torch
@@ -118,3 +119,93 @@ class Logger():
         self.data.append(train_point)
         with open(os.path.join(self.path), 'wb') as fp:
             pickle.dump(self.data, fp, -1)
+
+
+
+
+class DataOrganizer():
+    """ Class to organize given data into train, validation, test
+    Methods:
+        - makeDirTree()
+
+    """
+
+    def __init__(self, path):
+        self.dirs = glob(os.path.join(path, '*'))
+        self.val_subdirs = []
+        self.test_subdirs = []
+        self.train_subdirs = []
+
+    def makeDirTree(self, make_test = False, verbose=False):
+        parent_path = os.path.abspath(os.path.join(self.dirs[0], "../.."))
+
+        # val dir
+        val_dir = os.path.join(parent_path, "val")
+        if not os.path.exists(val_dir):
+            os.makedirs(val_dir)
+        for subdir in self.dirs:
+            base = os.path.join(val_dir, os.path.basename(subdir))
+            self.val_subdirs.append(base)
+            if verbose:
+                print(base)
+            if not os.path.exists(base):
+                os.makedirs(base)
+
+
+        # do we need test directory?
+        if make_test:
+            test_dir = os.path.join(parent_path, "test")
+            if not os.path.exists(test_dir):
+                os.makedirs(test_dir)
+            for subdir in self.dirs:
+                base = os.path.join(test_dir, os.path.basename(subdir))
+                self.test_subdirs.append(base)
+                if verbose:
+                    print(base)
+                if not os.path.exists(base):
+                    os.makedirs(base)
+
+        # train dir
+        train_dir = os.path.join(parent_path, "train")
+        if not os.path.exists(train_dir):
+            os.makedirs(train_dir)
+        for subdir in self.dirs:
+            base = os.path.join(train_dir, os.path.basename(subdir))
+            self.train_subdirs.append(base)
+            if verbose:
+                print(base)
+            if not os.path.exists(base):
+                os.makedirs(base)
+
+    def splitAndSymlink(self, val_prob=0.2, test_prob=0):
+
+        # split data
+        for i in range(0,len(self.dirs)):
+            image_list = glob(os.path.join(self.dirs[i], '*.tif'))
+            numb_images = len(image_list)
+
+            # validation set
+            val_list = np.random.choice(image_list, round(numb_images * val_prob), replace=False)
+            [os.symlink(x, os.path.join(self.val_subdirs[i], os.path.basename(x))) for x in val_list]
+
+            # remove val images
+            [image_list.remove(x) for x in val_list]
+
+            # check if test set is needed
+            if test_prob > 0:
+                test_list = np.random.choice(image_list, round(numb_images * test_prob), replace=False)
+                [os.symlink(x, os.path.join(self.test_subdirs[i], os.path.basename(x))) for x in test_list]
+
+                # remove test images
+                [image_list.remove(x) for x in test_list]
+
+            # train set = remaining images
+            [os.symlink(x, os.path.join(self.train_subdirs[i], os.path.basename(x))) for x in image_list]
+
+
+
+
+
+
+
+
