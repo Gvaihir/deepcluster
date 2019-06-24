@@ -8,7 +8,7 @@
 
 DATA="/home/aogorodnikov/classes/"
 MODEL="/home/aogorodnikov/model_alex_kmeans300/checkpoint.pth.tar"
-EXP="/home/aogorodnikov/kmeans300_linear_classif"
+EXP="/home/aogorodnikov/kmeans300_linear_classif_conv3"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 EPOCHS=100
 BATCH=256
@@ -17,7 +17,7 @@ BATCH=256
 mkdir -p ${EXP}
 
 ${PYTHON} eval_linear.py --model ${MODEL} --data ${DATA} \
-    --epochs ${EPOCHS} --batch_size ${BATCH} --conv 5 --lr 0.01 \
+    --epochs ${EPOCHS} --batch_size ${BATCH} --conv 3 --lr 0.01 \
     --make_test "True" --val_prob 0.2 --test_prob 0.1 \
     --wd -7 --verbose --exp ${EXP}
 
