@@ -19,6 +19,6 @@ mkdir -p ${EXP}
 ${PYTHON} eval_linear.py --model ${MODEL} --data ${DATA} \
     --epochs ${EPOCHS} --batch_size ${BATCH} --conv 5 --lr 0.01 \
     --make_test "True" --val_prob 0.2 --test_prob 0.1 \
-    --wd -7 --tencrops --verbose --exp ${EXP}
+    --wd -7 --tencrops "False" --verbose --exp ${EXP}
 
 
