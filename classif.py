@@ -34,7 +34,7 @@ parser.add_argument('--batch_size', default=256, type=int,
                     help='mini-batch size (default: 256)')
 parser.add_argument('--lr', default=0.01, type=float, help='learning rate')
 parser.add_argument('--momentum', default=0.9, type=float, help='momentum (default: 0.9)')
-parser.add_argument('--weight_decay', '--wd', default=-4, type=float,
+parser.add_argument('--weight_decay', default=-4, type=float,
                     help='weight decay pow (default: -4)')
 parser.add_argument('--seed', type=int, default=31, help='random seed')
 parser.add_argument('--make_test', type=bool, default=False, help='prepare test set?')
@@ -139,7 +139,7 @@ def main():
     optimizer = torch.optim.Adam(
         filter(lambda x: x.requires_grad, model.parameters()),
         lr=args.lr,
-        weight_decay=10**args.wd,
+        weight_decay=10**args.weight_decay,
     )
 
     # decay of lr
