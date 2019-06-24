@@ -17,13 +17,14 @@ import torch.optim
 import torch.utils.data
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
+import wandb
 
-from util import AverageMeter, learning_rate_decay, load_model, Logger
+from util import AverageMeter, learning_rate_decay, load_model, Logger, DataOrganizer
 
 parser = argparse.ArgumentParser(description="""Train linear classifier on top
                                  of frozen convolutional layers of an AlexNet.""")
 
-parser.add_argument('--data', type=str, help='path to dataset')
+parser.add_argument('--data', type=str, help='path to original dataset')
 parser.add_argument('--model', type=str, help='path to model')
 parser.add_argument('--conv', type=int, choices=[1, 2, 3, 4, 5],
                     help='on top of which convolutional layer train logistic regression')
@@ -40,6 +41,9 @@ parser.add_argument('--momentum', default=0.9, type=float, help='momentum (defau
 parser.add_argument('--weight_decay', '--wd', default=-4, type=float,
                     help='weight decay pow (default: -4)')
 parser.add_argument('--seed', type=int, default=31, help='random seed')
+parser.add_argument('--make_test', type=bool, default=False, help='prepare test set?')
+parser.add_argument('--val_prob', type=float, default=0.2, help='proportion of data for validation set')
+parser.add_argument('--test_prob', type=float, default=0, help='proportion of data for test set')
 parser.add_argument('--verbose', action='store_true', help='chatty')
 
 
@@ -52,7 +56,15 @@ def main():
     torch.cuda.manual_seed_all(args.seed)
     np.random.seed(args.seed)
 
+    # monitoring with WanB
+    wandb.init(config=args)
+
     best_prec1 = 0
+
+    # split data
+    organizer = DataOrganizer(path=args.data)
+    organizer.makeDirTree(make_test=args.make_test, verbose=False)
+    organizer.splitAndSymlink(val_prob=args.val_prob, test_prob=args.test_prob)
 
     # load model
     model = load_model(args.model)
@@ -67,8 +79,8 @@ def main():
     criterion = nn.CrossEntropyLoss().cuda()
 
     # data loading code
-    traindir = os.path.join(args.data, 'train')
-    valdir = os.path.join(args.data, 'val')
+    traindir = os.path.abspath(os.path.join(organizer.train_subdirs[0], "../"))
+    valdir = os.path.abspath(os.path.join(organizer.val_subdirs[0], "../"))
 
 
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406],
@@ -125,6 +137,8 @@ def main():
         weight_decay=10**args.weight_decay
     )
 
+    # watch model with WandB
+    wandb.watch(model)
 
     # create logs
     exp_log = os.path.join(args.exp, 'log')

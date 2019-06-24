@@ -126,7 +126,19 @@ class Logger():
 class DataOrganizer():
     """ Class to organize given data into train, validation, test
     Methods:
-        - makeDirTree()
+        - makeDirTree(self, make_test = False, verbose=False)
+        Makes tree of directories with class labels.
+        Arguments:
+            make_test - allocate data for model evaluation after full training cycle? Default = False
+            verbose - chatty
+
+        – splitAndSymlink(self, val_prob=0.2, test_prob=0)
+        Allocates symlinks to files according to split. Result: train data (all - (val+test)), val data and test data if applicable
+        Arguments:
+            val_prob - proportion of data to allocate to validation. Default = 0.2
+            test_prob - proportion of data to allocate to test. Default = 0
+
+        Remaining data will be allocated to training.
 
     """
 
