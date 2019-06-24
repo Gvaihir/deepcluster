@@ -19,7 +19,7 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 import wandb
 
-from util import AverageMeter, learning_rate_decay, load_model, Logger, DataOrganizer
+from util import load_model, DataOrganizer
 
 parser = argparse.ArgumentParser(description="""Train linear classifier on top
                                  of frozen convolutional layers of an AlexNet.""")
@@ -54,8 +54,6 @@ def main():
 
     # monitoring with WanB
     wandb.init(config=args)
-
-    best_prec1 = 0
 
     ### LOAD DATA ###
 
