@@ -139,7 +139,7 @@ def main():
     optimizer = torch.optim.Adam(
         filter(lambda x: x.requires_grad, model.parameters()),
         lr=args.lr,
-        weight_decay=args.wd,
+        weight_decay=10**args.wd,
     )
 
     # decay of lr
