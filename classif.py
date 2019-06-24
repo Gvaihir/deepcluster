@@ -125,11 +125,11 @@ def main():
     for param in model.features.parameters():
         param.requires_grad = False
     # unfreeze Linear scaling
-    if args.train_batchnorm:
-        for layer in model.modules():
-            if isinstance(layer, torch.nn.Linear):
-                for param in layer.parameters():
-                    param.requires_grad = True
+    for layer in model.modules():
+        if isinstance(layer, torch.nn.Linear):
+            for param in layer.parameters():
+                param.requires_grad = True
+
 
 
     # define loss function (criterion) and optimizer
