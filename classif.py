@@ -154,7 +154,8 @@ def main():
     cudnn.benchmark = True
 
     # training
-    model_training = train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=args.epochs)
+    model_training = train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=args.epochs,
+                                 dataloaders=dataloaders, device=device, dataset_sizes=dataset_sizes, out_dir=args.exp)
 
 
 
@@ -162,7 +163,7 @@ def main():
 
 
 
-def train_model(model, criterion, optimizer, scheduler, num_epochs):
+def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders, device, dataset_sizes, out_dir):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
@@ -229,7 +230,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs):
                 'state_dict': model.state_dict(),
                 'best_acc': best_acc,
                 'optimizer': optimizer.state_dict(),
-            }, os.path.join(args.exp, filename))
+            }, os.path.join(out_dir, filename))
 
         print()
 
