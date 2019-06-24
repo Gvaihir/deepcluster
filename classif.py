@@ -157,8 +157,7 @@ def main():
 
 
 
-#def train_model(model, criterion, optimizer, scheduler, num_epochs=args.epochs):
-def train_model(model, criterion, optimizer, scheduler, num_epochs=args.epochs):
+def train_model(model, criterion, optimizer, scheduler, num_epochs):
     since = time.time()
 
     best_model_wts = copy.deepcopy(model.state_dict())
