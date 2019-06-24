@@ -6,14 +6,19 @@
 #
 #!/bin/bash
 
-DATA="/datasets01/imagenet_full_size/061417/"
-MODELROOT="${HOME}/deepcluster_models"
-MODEL="${MODELROOT}/alexnet/checkpoint.pth.tar"
-EXP="${HOME}/deepcluster_exp/linear_classif"
+DATA="/home/aogorodnikov/classes/"
+MODEL="/home/aogorodnikov/model_alex_kmeans300/checkpoint.pth.tar"
+EXP="/home/aogorodnikov/kmeans300_linear_classif"
+PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
+EPOCHS=100
+BATCH=256
 
-PYTHON="${HOME}/test/conda/bin/python"
 
 mkdir -p ${EXP}
 
-${PYTHON} eval_linear.py --model ${MODEL} --data ${DATA} --conv 3 --lr 0.01 \
-  --wd -7 --tencrops --verbose --exp ${EXP} --workers 12
+${PYTHON} eval_linear.py --model ${MODEL} --data ${DATA} \
+    --epochs ${EPOCHS} --batch_size ${BATCH} --conv 5 --lr 0.01 \
+    --make_test "True" --val_prob 0.2 --test_prob 0.1 \
+    --wd -7 --tencrops --verbose --exp ${EXP}
+
+
