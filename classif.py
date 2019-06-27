@@ -131,7 +131,7 @@ def main():
         param.requires_grad = False
     # unfreeze Linear scaling
     for layer in model.modules():
-        if isinstance(layer, torch.nn.Linear):
+        if isinstance(layer, (torch.nn.Linear, torch.nn.BatchNorm2d)):
             for param in layer.parameters():
                 param.requires_grad = True
 
