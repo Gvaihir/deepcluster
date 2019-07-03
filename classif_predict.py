@@ -34,6 +34,7 @@ parser = argparse.ArgumentParser(description="""Use classifier to predict cellul
 
 parser.add_argument('--data', type=str, help='path to original dataset')
 parser.add_argument('--model', type=str, help='path to model')
+parser.add_argument('--class_labels', type=str, help='abs path to class labels')
 parser.add_argument('--exp', type=str, default='', help='exp folder')
 parser.add_argument('--workers', default=4, type=int,
                     help='number of data loading workers (default: 4)')
@@ -70,10 +71,7 @@ class ImageOuput(object):
         self.img_name = []
         self.class_name = []
 
-    def test(self, model, dataloader):
-        # monitor test loss and accuracy
-        img_name = []
-        class_name = []
+    def test(self, model, dataloader, classes):
 
         with torch.no_grad():
             for batch_idx, (data, labels, path) in enumerate(dataloader):
@@ -84,7 +82,8 @@ class ImageOuput(object):
                 outputs = model(data)
                 _, preds = torch.max(outputs, 1)
                 self.img_name.extend(path)
-                self.class_name.extend(preds)
+                res = [classes[x] for x in preds.tolist()]
+                self.class_name.extend(res)
 
 
 
@@ -130,14 +129,17 @@ def main():
 
     model.cuda()
 
+    ### Class Labels
+    with open(args.class_labels, 'r') as f:
+        classes = f.read().splitlines()
 
     ### Create object ###
     obj = ImageOuput()
-    obj.test(model, dataloader)
+    obj.test(model, dataloader, classes)
 
 
     ### Export JSON ###
-    with open(os.path.join(args.exp, "json"), "w") as file:
+    with open("".join(args.exp, "json"), "w") as file:
         json.dump(obj.__dict__, file)
 
 
