@@ -8,7 +8,7 @@
 
 DATA="/home/aogorodnikov/classes/"
 MODEL="/home/aogorodnikov/model_alex_kmeans300/checkpoint.pth.tar"
-EXP="/home/aogorodnikov/kmeans300_linear_classif"
+EXP="/home/aogorodnikov/kmeans300_linear_classif_batchNorm"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 EPOCHS=100
 BATCH=256
