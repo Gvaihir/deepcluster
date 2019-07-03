@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DATA="/home/aogorodnikov/classes/"
+DATA="/sudoku/02_sudoku/cropped/Pt04/"
 MODEL="/home/aogorodnikov/model_alex_kmeans300/checkpoint.pth.tar"
 CLASSES="/home/aogorodnikov/classes.txt"
 EXP="/home/aogorodnikov/classif_predict"
