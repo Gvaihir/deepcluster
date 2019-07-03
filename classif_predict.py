@@ -5,26 +5,16 @@
 # LICENSE file in the root directory of this source tree.
 #
 
-import time
-import matplotlib.pyplot as plt
+
 import os
 import numpy as np
 import torch
-from torch import nn
-from torch import optim
-import torch.nn.functional as F
-from torchvision import datasets, transforms, models
-from PIL import Image
-from torch.autograd import Variable
-from util import load_model
-from util import AverageMeter, Logger, UnifLabelSampler
-import seaborn as sn
-import pandas as pd
-from glob import glob
+
+from torchvision import datasets
 from torch.utils.data import DataLoader, Dataset
-import torchvision
+
 import torchvision.transforms as transforms
-import cv2
+
 import json
 
 
