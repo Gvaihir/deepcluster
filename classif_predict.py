@@ -138,7 +138,7 @@ def main():
     obj = ImageOuput()
     obj.test(model, dataloader, classes)
 
-    out_file = ".".join([os.path.basename(data_dir), "json"])
+    out_file = ".".join([os.path.basename(os.path.dirname(data_dir)), "json"])
 
 
 
