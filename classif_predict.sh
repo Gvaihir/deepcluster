@@ -17,7 +17,7 @@ WORKERS=8
 
 mkdir -p ${EXP}
 
-${PYTHON} classif.py --model ${MODEL} --data ${DATA} \
+${PYTHON} classif_predict.py --model ${MODEL} --data ${DATA} \
     --batch_size ${BATCH} --verbose --exp ${EXP} \
     --class_labels ${CLASSES} --workers ${WORKERS}
 
