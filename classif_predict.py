@@ -5,7 +5,9 @@
 # LICENSE file in the root directory of this source tree.
 #
 
+import argparse
 import os
+import time
 import numpy as np
 import torch
 from torch import nn
@@ -96,7 +98,7 @@ class ImageOuput(object):
 def main():
     global args
     args = parser.parse_args()
-
+    since = time.time()
     #fix random seeds
     torch.manual_seed(args.seed)
     torch.cuda.manual_seed_all(args.seed)
@@ -145,7 +147,9 @@ def main():
     with open(os.path.join(args.exp, out_file), "w") as file:
         json.dump(obj.__dict__, file)
 
-
+    time_elapsed = time.time() - since
+    print('Prediction complete in {:.0f}m {:.0f}s'.format(
+        time_elapsed // 60, time_elapsed % 60))
 
 if __name__ == '__main__':
     main()
