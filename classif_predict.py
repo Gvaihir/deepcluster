@@ -38,7 +38,6 @@ parser.add_argument('--class_labels', type=str, help='abs path to class labels')
 parser.add_argument('--exp', type=str, default='', help='exp folder')
 parser.add_argument('--workers', default=4, type=int,
                     help='number of data loading workers (default: 4)')
-parser.add_argument('--epochs', type=int, default=100, help='number of total epochs to run (default: 100)')
 parser.add_argument('--batch_size', default=256, type=int,
                     help='mini-batch size (default: 256)')
 
@@ -137,9 +136,13 @@ def main():
     obj = ImageOuput()
     obj.test(model, dataloader, classes)
 
+    out_file = ".".join([os.path.basename(data_dir), "json"])
+
+
+
 
     ### Export JSON ###
-    with open("".join(args.exp, "json"), "w") as file:
+    with open(os.path.join(args.exp, out_file), "w") as file:
         json.dump(obj.__dict__, file)
 
 
