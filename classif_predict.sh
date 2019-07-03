@@ -7,9 +7,9 @@
 #!/bin/bash
 
 DATA="/sudoku/02_sudoku/cropped/Pt04/"
-MODEL="/home/aogorodnikov/model_alex_kmeans300/checkpoint.pth.tar"
+MODEL="/home/aogorodnikov/kmeans100_linear_classif_imagenet/checkpoint.pth.tar"
 CLASSES="/home/aogorodnikov/classes.txt"
-EXP="/home/aogorodnikov/classif_predict"
+EXP="/home/aogorodnikov/classif_predict/Pt04"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 BATCH=256
 WORKERS=8
