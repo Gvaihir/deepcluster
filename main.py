@@ -105,7 +105,7 @@ def main():
             model.load_state_dict(checkpoint['state_dict'])
             try:
                 optimizer.load_state_dict(checkpoint['optimizer'])
-            except: KeyError
+            except KeyError:
                 pass
 
             print("=> loaded checkpoint '{}' (epoch {})"
