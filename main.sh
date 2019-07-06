@@ -11,17 +11,16 @@ ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
-WORKERS=4
+WORKERS=8
 EPOCHS=100
-BATCH=256
-EXP="/home/aogorodnikov/model_alex100_rgb_onImagenet"
+BATCH=512
+EXP="/home/aogorodnikov/model_alex100_rgb"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
 CLUST="Kmeans"
 
 
 mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
-  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS} --resume ${RESUME} \
+  --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS}  \
   --clustering ${CLUST} --epochs ${EPOCHS} --batch ${BATCH}
