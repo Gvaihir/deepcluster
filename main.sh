@@ -6,17 +6,17 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/data"
+DIR="/home/aogorodnikov/data_rgb"
 ARCH="alexnet"
 LR=0.05
 WD=-5
 K=100
 WORKERS=4
-EPOCHS=300
+EPOCHS=100
 BATCH=256
-EXP="/home/aogorodnikov/model_alex_kmeans300"
+EXP="/home/aogorodnikov/model_alex100_rgb_onImagenet"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-RESUME="/home/aogorodnikov/model_alex_kmeans200/checkpoint.pth.tar"
+RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
 CLUST="Kmeans"
 
 
