@@ -12,10 +12,10 @@ LR=0.05
 WD=-5
 K=100
 WORKERS=8
-EPOCHS=200
+EPOCHS=700
 BATCH=512
-EXP="/home/aogorodnikov/model_alex200_rgb"
-RESUME="/home/aogorodnikov/model_alex100_rgb/checkpoint.pth.tar"
+EXP="/home/aogorodnikov/model_ImageNetPlus200_rgb"
+RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 CLUST="Kmeans"
 
