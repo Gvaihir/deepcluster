@@ -14,7 +14,8 @@ K=100
 WORKERS=8
 EPOCHS=100
 BATCH=512
-EXP="/home/aogorodnikov/model_alex100_rgb"
+EXP="/home/aogorodnikov/model_alex200_rgb"
+RESUME="/home/aogorodnikov/model_alex100_rgb/checkpoint.pth.tar"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 CLUST="Kmeans"
 
@@ -23,4 +24,4 @@ mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
   --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS}  \
-  --clustering ${CLUST} --epochs ${EPOCHS} --batch ${BATCH}
+  --clustering ${CLUST} --epochs ${EPOCHS} --batch ${BATCH} --resume ${RESUME}
