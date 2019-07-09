@@ -6,10 +6,10 @@
 #
 #!/bin/bash
 
-DATA="/sudoku/02_sudoku/cropped/Pt04/"
-MODEL="/home/aogorodnikov/kmeans100_linear_classif_imagenet/checkpoint.pth.tar"
-CLASSES="/home/aogorodnikov/classes.txt"
-EXP="/home/aogorodnikov/classif_predict/Pt04"
+DATA="/sudoku/cropp_rgb/Pt04/"
+MODEL="/home/aogorodnikov/linear_classif_rgb_e100/checkpoint.pth.tar"
+CLASSES="/home/aogorodnikov/classes_rgb.txt"
+EXP="/home/aogorodnikov/classif_predict_rgb/Pt04"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 BATCH=256
 WORKERS=8
