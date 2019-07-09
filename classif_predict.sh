@@ -11,8 +11,8 @@ MODEL="/home/aogorodnikov/linear_classif_rgb_e100/checkpoint.pth.tar"
 CLASSES="/home/aogorodnikov/classes_rgb.txt"
 EXP="/home/aogorodnikov/classif_predict_rgb/Pt04"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
-BATCH=256
-WORKERS=8
+BATCH=128
+WORKERS=4
 
 
 mkdir -p ${EXP}
