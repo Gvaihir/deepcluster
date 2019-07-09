@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DATA="/sudoku/cropp_rgb/Pt04/"
+DATA="/sudoku/crop_rgb/Pt04/"
 MODEL="/home/aogorodnikov/linear_classif_rgb_e100/checkpoint.pth.tar"
 CLASSES="/home/aogorodnikov/classes_rgb.txt"
 EXP="/home/aogorodnikov/classif_predict_rgb/Pt04"
