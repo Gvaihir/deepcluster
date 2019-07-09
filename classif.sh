@@ -7,8 +7,8 @@
 #!/bin/bash
 
 DATA="/home/aogorodnikov/classes_rgb/"
-MODEL="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
-EXP="/home/aogorodnikov/linear_classif_rgb_ImageNet"
+MODEL="/home/aogorodnikov/model_alex100_rgb/checkpoint.pth.tar"
+EXP="/home/aogorodnikov/linear_classif_rgb_e100"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 EPOCHS=100
 BATCH=256
