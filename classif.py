@@ -184,6 +184,11 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
 
+    tran_acc = 0.0
+    val_acc = 0.0
+    train_loss = 1.0
+    val_loss = 1.0
+
     for epoch in range(num_epochs):
         print('Epoch {}/{}'.format(epoch, num_epochs - 1))
         print('-' * 10)
@@ -229,8 +234,22 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(
                 phase, epoch_loss, epoch_acc))
 
+            # variables for WandB logging
+            if phase == 'train':
+                tran_acc = epoch_acc
+                train_loss = epoch_loss
+                val_acc = val_acc
+                val_loss = val_loss
+
+            else:
+                tran_acc = tran_acc
+                train_loss = train_loss
+                val_acc = epoch_acc
+                val_loss = epoch_loss
+
             # WandB logging
-            wandb.log({"phase": phase, "loss": epoch_loss, "accuracy": epoch_acc})
+            wandb.log({"phase": epoch, "train_loss": train_loss, "train_acc": tran_acc,
+                       "val_loss": val_loss, "val_acc": val_acc}, step=epoch)
 
             # deep copy the model
             is_best = epoch_acc > best_acc
