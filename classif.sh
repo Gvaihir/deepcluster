@@ -6,9 +6,9 @@
 #
 #!/bin/bash
 
-rm -r train
-rm -r test
-rm -r val
+rm -r ~/train
+rm -r ~/test
+rm -r ~/val
 
 
 DATA="/home/aogorodnikov/classes_rgb_corrected/"
