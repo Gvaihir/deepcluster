@@ -24,6 +24,6 @@ mkdir -p ${EXP}
 ${PYTHON} classif.py --model ${MODEL} --data ${DATA} \
     --epochs ${EPOCHS} --batch_size ${BATCH} --lr 0.01 \
     --make_test "True" --val_prob 0.2 --test_prob 0.1 \
-    --weight_decay -7 --verbose --exp ${EXP}
+    --weight_decay -7 --verbose --exp ${EXP} --freeze
 
 
