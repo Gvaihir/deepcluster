@@ -60,6 +60,7 @@ def main():
 
     # monitoring with WanB
     wandb.init(config=args)
+    wandb.config.update(args)  # adds all of the arguments as config variables
 
     ### LOAD DATA ###
 
@@ -225,6 +226,9 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(
                 phase, epoch_loss, epoch_acc))
 
+            # WandB logging
+            wandb.log({"phase": phase, "loss": epoch_loss, "accuracy": epoch_acc})
+
             # deep copy the model
             is_best = epoch_acc > best_acc
             if phase == 'val' and is_best:
@@ -258,3 +262,6 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, dataloaders,
 
 if __name__ == '__main__':
     main()
+
+
+
