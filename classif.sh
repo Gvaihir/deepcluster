@@ -6,9 +6,14 @@
 #
 #!/bin/bash
 
-DATA="/home/aogorodnikov/classes_rgb/"
+rm -r train
+rm -r test
+rm -r val
+
+
+DATA="/home/aogorodnikov/classes_rgb_corrected/"
 MODEL="/home/aogorodnikov/model_alex100_rgb/checkpoint.pth.tar"
-EXP="/home/aogorodnikov/linear_classif_rgb_e100"
+EXP="/home/aogorodnikov/linear_classif_rgb_e100_corrected"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 EPOCHS=100
 BATCH=256
