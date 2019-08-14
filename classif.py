@@ -47,6 +47,21 @@ parser.add_argument('--val_prob', type=float, default=0.2, help='proportion of d
 parser.add_argument('--test_prob', type=float, default=0, help='proportion of data for test set')
 parser.add_argument('--verbose', action='store_true', help='chatty')
 
+class ImageFolderWithPaths(datasets.ImageFolder):
+    """
+    Custom dataset that includes image file paths. Extends
+    torchvision.datasets.ImageFolder
+    """
+
+    # override the __getitem__ method. this is the method dataloader calls
+    def __getitem__(self, index):
+        # this is what ImageFolder normally returns
+        original_tuple = super(ImageFolderWithPaths, self).__getitem__(index)
+        # the image file path
+        path = self.imgs[index][0]
+        # make a new tuple that includes original and the path
+        tuple_with_path = (original_tuple + (path,))
+        return tuple_with_path
 
 def main():
     global args
@@ -88,12 +103,12 @@ def main():
                              transforms.ToTensor(),
                              normalize]
 
-    train_dataset = datasets.ImageFolder(
+    train_dataset = ImageFolderWithPaths(
         traindir,
         transform=transforms.Compose(transformations_train)
     )
 
-    val_dataset = datasets.ImageFolder(
+    val_dataset = ImageFolderWithPaths(
         valdir,
         transform=transforms.Compose(transformations_val)
     )
@@ -156,6 +171,11 @@ def main():
     # training
     model_training = train_model(model, criterion, optimizer, exp_lr_scheduler, num_epochs=args.epochs,
                                  dataloaders=dataloaders, device=device, dataset_sizes=dataset_sizes, out_dir=args.exp)
+
+    # export list of classes
+    with open(os.path.join(args.exp, os.path.basename(args.data) + '.txt'), 'w') as f:
+        for item in train_dataset.classes:
+            f.write("%s\n" % item)
 
 
 
