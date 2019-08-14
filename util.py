@@ -11,6 +11,7 @@ from glob import glob
 import numpy as np
 import torch
 from torch.utils.data.sampler import Sampler
+import torchvision.datasets as datasets
 
 import models
 
