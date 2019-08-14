@@ -129,6 +129,8 @@ def main():
 
 
     if args.freeze:
+        print("Freezing Linear and BatchNorm2d layers")
+        sys.stdout.flush()
         # freeze some layers
         for param in model.features.parameters():
             param.requires_grad = False
