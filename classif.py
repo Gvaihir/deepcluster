@@ -163,7 +163,7 @@ def main():
 
 
     # export list of classes
-    dataset = ImageFolderWithPaths(data_dir, transform=None)
+    dataset = ImageFolderWithPaths(args.data, transform=None)
     with open(os.path.join(args.exp, os.path.basename(args.data) + '.txt'), 'w') as f:
         for item in dataset.classes:
             f.write("%s\n" % item)
