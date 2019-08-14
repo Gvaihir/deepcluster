@@ -42,6 +42,7 @@ parser.add_argument('--momentum', default=0.9, type=float, help='momentum (defau
 parser.add_argument('--weight_decay', default=-4, type=float,
                     help='weight decay pow (default: -4)')
 parser.add_argument('--seed', type=int, default=31, help='random seed')
+parser.add_argument('--freeze', action='store_true', help='Freeze all except Linear and BatchNorm')
 parser.add_argument('--make_test', type=bool, default=False, help='prepare test set?')
 parser.add_argument('--val_prob', type=float, default=0.2, help='proportion of data for validation set')
 parser.add_argument('--test_prob', type=float, default=0, help='proportion of data for test set')
@@ -126,14 +127,15 @@ def main():
     model.top_layer = nn.Linear(model.top_layer.weight.size(1), len(organizer.train_subdirs))
 
 
-    # freeze some layers
-    for param in model.features.parameters():
-        param.requires_grad = False
-    # unfreeze Linear scaling
-    for layer in model.modules():
-        if isinstance(layer, (torch.nn.Linear, torch.nn.BatchNorm2d)):
-            for param in layer.parameters():
-                param.requires_grad = True
+    if args.freeze:
+        # freeze some layers
+        for param in model.features.parameters():
+            param.requires_grad = False
+        # unfreeze Linear scaling
+        for layer in model.modules():
+            if isinstance(layer, (torch.nn.Linear, torch.nn.BatchNorm2d)):
+                for param in layer.parameters():
+                    param.requires_grad = True
 
 
 
