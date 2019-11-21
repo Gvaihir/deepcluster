@@ -59,7 +59,7 @@ def main():
     torch.cuda.manual_seed_all(args.seed)
     np.random.seed(args.seed)
 
-    # monitoring with WanB
+    # monitoring with WandB
     wandb.init(config=args)
     wandb.config.update(args)  # adds all of the arguments as config variables
 

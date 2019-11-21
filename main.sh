@@ -6,16 +6,16 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/data_rgb"
+DIR="/home/aogorodnikov/anomaly_links/Pt04"
 ARCH="alexnet"
 LR=0.05
 WD=-5
-K=100
+K=80
 WORKERS=8
 EPOCHS=700
-BATCH=512
-EXP="/home/aogorodnikov/model_ImageNetPlus200_rgb"
-RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
+BATCH=256
+EXP="/home/aogorodnikov/deepclust_afterACAE"
+#RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 CLUST="Kmeans"
 
@@ -24,4 +24,4 @@ mkdir -p ${EXP}
 
 CUDA_VISIBLE_DEVICES=0 ${PYTHON} main.py ${DIR} --exp ${EXP} --arch ${ARCH} \
   --lr ${LR} --wd ${WD} --k ${K} --sobel --verbose --workers ${WORKERS}  \
-  --clustering ${CLUST} --epochs ${EPOCHS} --batch ${BATCH} --resume ${RESUME}
+  --clustering ${CLUST} --epochs ${EPOCHS} --batch ${BATCH}
