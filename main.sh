@@ -6,7 +6,7 @@
 #
 #!/bin/bash
 
-DIR="/home/aogorodnikov/anomaly_links/Pt04"
+DIR="/sudoku/anomaly_links/Pt04"
 ARCH="alexnet"
 LR=0.05
 WD=-5
@@ -15,7 +15,7 @@ WORKERS=8
 EPOCHS=700
 BATCH=256
 EXP="/home/aogorodnikov/deepclust_afterACAE"
-#RESUME="/home/aogorodnikov/deepcluster_models/alexnet/checkpoint.pth.tar"
+RESUME="/sudoku/deepclust_afterACAE/checkpoint.pth.tar"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 CLUST="Kmeans"
 
