@@ -14,8 +14,8 @@ K=80
 WORKERS=8
 EPOCHS=700
 BATCH=256
-EXP="/home/aogorodnikov/deepclust_afterACAE"
-RESUME="/sudoku/deepclust_afterACAE/checkpoint.pth.tar"
+EXP="/sudoku/deepclust_afterACAE"
+RESUME="/home/aogorodnikov/deepclust_afterACAE/checkpoint.pth.tar"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 CLUST="Kmeans"
 
