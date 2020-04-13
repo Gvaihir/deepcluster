@@ -7,9 +7,9 @@
 #!/bin/bash
 
 DATA="/sudoku/crop_rgb/Pt11/"
-MODEL="/home/aogorodnikov/linear_classif_rgb_e100_augmented/checkpoint.pth.tar"
-CLASSES="/home/aogorodnikov/linear_classif_rgb_e100_augmented/classes.txt"
-EXP="/home/aogorodnikov/classif_predict_rgb_augment/Pt11"
+MODEL="/home/aogorodnikov/linear_classif_postACAE_aug/checkpoint.pth.tar"
+CLASSES="/home/aogorodnikov/linear_classif_postACAE_aug/classes.txt"
+EXP="/home/aogorodnikov/classif_predict_postACAE_aug/Pt11"
 PYTHON="/home/aogorodnikov/anaconda3/envs/imgSudoku/bin/python"
 BATCH=128
 WORKERS=4
